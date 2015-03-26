@@ -22,6 +22,8 @@ tartaruga.right(90)
 tartaruga.forward(100)
 tartaruga.right(90)
 tartaruga.forward(50)
+tartaruga.penup()
+tartaruga.left(90)
 
 
 #abrindo entrada de texto salvo como entrada.txt, 
@@ -41,17 +43,22 @@ escolha_computador = computador.lower()
 acerto = 0
 errado = 0
 tamanho = len(escolha_computador)
+letras = list(escolha_computador)
 
 # tracinhos
 tartaruga.speed(20)
-tartaruga.setpos(-220,-10)
+tartaruga.setpos(0,-10)
 for i in range(tamanho):
-	if i != "":
+	if letras[i] != " ":
 		tartaruga.pendown()
 		tartaruga.color("black")
-		tartaruga.forward(10)
+		tartaruga.forward(30)
 		tartaruga.penup()
-		tartaruga.forward(5)
+		tartaruga.forward(15)
+	elif letras[i] == " ":
+		tartaruga.penup()
+		tartaruga.forward(15)
+		
 	
 		
 	
