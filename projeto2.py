@@ -34,10 +34,9 @@ def cabeca():
 	tartaruga.penup()
 	tartaruga.setpos(-180,180)
 	tartaruga.pendown()
-	tartaruga.left(90)
-	tartaruga.circle(15)
 	tartaruga.right(90)
-	
+	tartaruga.circle(15)
+	tartaruga.left(90)
 #desenha do o corpo
 def corpo():
 	tartaruga.penup()
@@ -53,7 +52,7 @@ def bracodireito():
 	tartaruga.setpos(-180,100)
 	tartaruga.right(90)
 	tartaruga.pendown()
-	tartaruga.foward(50)
+	tartaruga.forward(50)
 	tartaruga.penup()
 	tartaruga.left(90)
 	
@@ -64,7 +63,7 @@ def bracoesquerdo():
 	tartaruga.setpos(-180,100)
 	tartaruga.left(90)
 	tartaruga.pendown()
-	tartaruga.foward(50)
+	tartaruga.forward(50)
 	tartaruga.penup()
 	tartaruga.right(90)
 	
@@ -74,7 +73,7 @@ def pernaesquerda():
 	tartaruga.setpos(-180,40)
 	tartaruga.left(30)
 	tartaruga.pendown()
-	tartaruga.foward(50)
+	tartaruga.forward(50)
 	tartaruga.penup()
 	tartaruga.right(30)
 	
@@ -84,7 +83,7 @@ def pernadireita():
 	tartaruga.setpos(-180,40)
 	tartaruga.right(30)
 	tartaruga.pendown()
-	tartaruga.foward(50)
+	tartaruga.forward(50)
 	tartaruga.penup()
 	tartaruga.left(30)
 	
@@ -125,10 +124,12 @@ tamanho = len(escolha_computador)
 letras = list(escolha_computador)
 
 # tracinhos
+tartaruga.setheading(0)
 tartaruga.penup()
 tartaruga.speed(20)
 tartaruga.setpos(-160,-10)
 tartaruga.hideturtle()
+tartaruga.setheading(0)
 for i in range(tamanho):
 	if letras[i] != " ":
 		tartaruga.pendown()
@@ -164,7 +165,7 @@ while erro < 6 and acerto < len(escolha_computador): # e os espaços?
 		desenho_geral()
 		
 			
-		
+
 		
 
 
