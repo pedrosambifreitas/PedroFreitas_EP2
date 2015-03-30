@@ -31,6 +31,8 @@ tartaruga.penup()
 
 #desenhando a cabeca
 def cabeca():
+	tartaruga.left(90)
+	tartaruga.left(180)
 	tartaruga.penup()
 	tartaruga.setpos(-180,180)
 	tartaruga.pendown()
@@ -116,10 +118,18 @@ for i in conteudo:
 	palavras=i.strip()
 	if palavras != "":
 		lista.append(palavras)
-		
+
+from unicodedata import normalize
+def remover_acentos(txt):
+	return normalize('NFKD', txt).encode('ASCII','ignore').decode('ASCII')
+if __name__ == '__main__':
+	from doctest import testmod
+	testmod()		
 #computador escolhendo e limpando a palavra, cria lista com as letars separadas
 computador = choice(lista)
+lopes = computador
 escolha_computador = computador.lower()
+escolha_computador = remover_acentos(escolha_computador)
 tamanho = len(escolha_computador)
 letras = list(escolha_computador)
 
@@ -145,6 +155,7 @@ for i in range(tamanho):
 erro = 0
 acerto = 0
 acerto2 = 0
+
 while erro < 6 and acerto < len(escolha_computador): # e os espaços?
 	tentativa = turtle.textinput("escolha da palavra","Escolha uma letra")
 	tentativa = tentativa.lower()
@@ -153,19 +164,20 @@ while erro < 6 and acerto < len(escolha_computador): # e os espaços?
 		
 	# logica do jogo
 	for i in range(0,len(escolha_computador)):
+
 		if tentativa == escolha_computador[i]:
 			tartaruga.penup()
 			tartaruga.setpos(-160+i*40,-10)
 			tartaruga.pendown()
-			tartaruga.write(tentativa)
+			tartaruga.write(computador[i])
 			acerto+=1
 			acerto2+=1
+					
 	if acerto2 == 0:
 		erro+=1
 		desenho_geral()
 		
 			
 
-		
-
+janela.exitonclick()
 
