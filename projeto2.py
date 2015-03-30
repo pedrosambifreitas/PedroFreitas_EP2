@@ -8,12 +8,15 @@ import turtle
 janela = turtle.Screen()
 janela.bgcolor("green")
 janela.title("Jogo da Forca")
+tartaruga = turtle.Turtle()
+
 
 #desenhando a forca em funcao 
 tartaruga = turtle.Turtle()
 tartaruga.speed(20)
+tartaruga.hideturtle()
 tartaruga.penup()
-tartaruga.setpos(-250,-10)
+tartaruga.setpos(-280,-10)
 tartaruga.pendown()
 tartaruga.color("black")
 tartaruga.left(90)
@@ -23,13 +26,13 @@ tartaruga.forward(100)
 tartaruga.right(90)
 tartaruga.forward(50)
 tartaruga.penup()
-tartaruga.left(90)
+
 
 
 #desenhando a cabeca
 def cabeca():
 	tartaruga.penup()
-	tartaruga.setpos(-150,180)
+	tartaruga.setpos(-180,180)
 	tartaruga.pendown()
 	tartaruga.left(90)
 	tartaruga.circle(15)
@@ -38,7 +41,8 @@ def cabeca():
 #desenha do o corpo
 def corpo():
 	tartaruga.penup()
-	tartaruga.setpos(-150,140)
+	tartaruga.setpos(-180,140)
+	tartaruga.pendown()
 	tartaruga.forward(100)
 	tartaruga.penup()
 	
@@ -46,9 +50,9 @@ def corpo():
 #desenha braco direito
 def bracodireito():
 	tartaruga.penup()
-	tartaruga.setpos(-150,100)
+	tartaruga.setpos(-180,100)
 	tartaruga.right(90)
-	tartaruga.pendow()
+	tartaruga.pendown()
 	tartaruga.foward(50)
 	tartaruga.penup()
 	tartaruga.left(90)
@@ -57,9 +61,9 @@ def bracodireito():
 #desenha braco esquerdo	
 def bracoesquerdo():
 	tartaruga.penup()
-	tartaruga.setpos(-150,100)
+	tartaruga.setpos(-180,100)
 	tartaruga.left(90)
-	tartaruga.pendow()
+	tartaruga.pendown()
 	tartaruga.foward(50)
 	tartaruga.penup()
 	tartaruga.right(90)
@@ -67,9 +71,9 @@ def bracoesquerdo():
 #desenha perna esquerda
 def pernaesquerda():
 	tartaruga.penup()
-	tartaruga.setpos(-150,40)
+	tartaruga.setpos(-180,40)
 	tartaruga.left(30)
-	tartaruga.pendow()
+	tartaruga.pendown()
 	tartaruga.foward(50)
 	tartaruga.penup()
 	tartaruga.right(30)
@@ -77,12 +81,29 @@ def pernaesquerda():
 #desenha	
 def pernadireita():
 	tartaruga.penup()
-	tartaruga.setpos(-150,40)
+	tartaruga.setpos(-180,40)
 	tartaruga.right(30)
-	tartaruga.pendow()
+	tartaruga.pendown()
 	tartaruga.foward(50)
 	tartaruga.penup()
 	tartaruga.left(30)
+	
+	
+def desenho_geral():
+	global erro
+	if erro == 1:
+		cabeca()
+	if erro == 2:
+		corpo()
+	if erro == 3:
+		bracodireito()
+	if erro == 4:
+		bracoesquerdo()
+	if erro == 5:
+		pernaesquerda()
+	if erro == 6:
+		pernadireita()
+		
 
 
 
@@ -100,15 +121,14 @@ for i in conteudo:
 #computador escolhendo e limpando a palavra, cria lista com as letars separadas
 computador = choice(lista)
 escolha_computador = computador.lower()
-acerto = 0
-errado = 0
 tamanho = len(escolha_computador)
 letras = list(escolha_computador)
 
 # tracinhos
 tartaruga.penup()
 tartaruga.speed(20)
-tartaruga.setpos(-80,-10)
+tartaruga.setpos(-160,-10)
+tartaruga.hideturtle()
 for i in range(tamanho):
 	if letras[i] != " ":
 		tartaruga.pendown()
@@ -120,14 +140,31 @@ for i in range(tamanho):
 		tartaruga.penup()
 		tartaruga.forward(25)
 		
+			
+erro = 0
+acerto = 0
+acerto2 = 0
+while erro < 6 and acerto < len(escolha_computador): # e os espaços?
+	tentativa = turtle.textinput("escolha da palavra","Escolha uma letra")
+	tentativa = tentativa.lower()
+	acerto2=0
 	
 		
-erro = 0
-while erro < 6 and acerto < len(computador): # e os espaços?
-	tentativa = janela.textinput("Escolha uma letra")
-	tentativa = tentativa.lower()
 	# logica do jogo
-	#if tentativa in escolha_computador:
-
+	for i in range(0,len(escolha_computador)):
+		if tentativa == escolha_computador[i]:
+			tartaruga.penup()
+			tartaruga.setpos(-160+i*40,-10)
+			tartaruga.pendown()
+			tartaruga.write(tentativa)
+			acerto+=1
+			acerto2+=1
+	if acerto2 == 0:
+		erro+=1
+		desenho_geral()
+		
+			
+		
+		
 
 
