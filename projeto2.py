@@ -37,7 +37,7 @@ def cabeca():
 	tartaruga.setpos(-180,180)
 	tartaruga.pendown()
 	tartaruga.right(90)
-	tartaruga.circle(15)
+	tartaruga.circle(19)
 	tartaruga.left(90)
 #desenha do o corpo
 def corpo():
