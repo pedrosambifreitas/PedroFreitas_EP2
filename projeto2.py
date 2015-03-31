@@ -118,7 +118,7 @@ for i in conteudo:
 	palavras=i.strip()
 	if palavras != "":
 		lista.append(palavras)
-
+#codigo de normalizacao retirado do site :http://wiki.python.org.br/RemovedorDeAcentos
 from unicodedata import normalize
 def remover_acentos(txt):
 	return normalize('NFKD', txt).encode('ASCII','ignore').decode('ASCII')
@@ -156,7 +156,7 @@ erro = 0
 acerto = 0
 acerto2 = 0
 
-while erro < 6 and acerto < len(escolha_computador): # e os espaços?
+while erro < 6 and acerto <len(escolha_computador): # e os espaços?
 	tentativa = turtle.textinput("escolha da palavra","Escolha uma letra")
 	tentativa = tentativa.lower()
 	acerto2=0
